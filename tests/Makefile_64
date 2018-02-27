@@ -1,0 +1,48 @@
+##
+## EPITECH PROJECT, 2018
+## asm
+## File description:
+## asm
+##
+
+CC	=	gcc
+
+CFLAGS  =	-Wall -Wextra -Winit-self -Wwrite-strings
+CFLAGS  +=	-Wcast-align -Wshadow -Wredundant-decls -Wfloat-equal
+CFLAGS  +=	-Wundef -Wlogical-op -Winline -Wdouble-promotion
+CFLAGS  +=	-Wunreachable-code -coverage -Iinclude -m64
+
+LFLAGS	=	-ldl -lcriterion
+
+NAME	=	tests_x64
+
+RM	=	rm -f
+
+SRCDIR	=	src
+
+SRC	=	test/test_strlen.c			\
+		test/test_strcpy.c			\
+		test/test_strcmp.c			\
+		utils/utils_strcmp.c
+
+SRC	:=	$(addprefix $(SRCDIR)/, $(SRC))
+
+OBJ	=	$(SRC:.c=.o)
+
+all:	$(NAME)
+
+$(NAME):	$(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LFLAGS)
+
+clean:
+	$(RM) $(OBJ)
+	$(RM) $(SRC:.c=.gcno)
+	$(RM) $(SRC:.c=.gcda)
+	$(RM) $(addsuffix ~, $(SRC))
+
+fclean:	clean
+	$(RM) $(NAME)
+
+re: fclean all
+
+.PHONY:	all clean fclean re
