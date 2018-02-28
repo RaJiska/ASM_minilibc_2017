@@ -2,23 +2,24 @@
 	global strcpy:function
 
 	section .text:
+	; char *strcpy(char *dest, const char *src)
 strcpy:
-	push rbp
-	mov rbp, rsp
+	; RSI = dest
+	; RDI = src
 
-	mov rdx, rsi
+	mov r9, rsi
+	mov r10, rdi
 
 	.loop_begin:
-	movzx rax, BYTE [rsi]
-	mov BYTE [rdi], al
-	test al, al
-	je short .loop_end
-	inc rdi
-	inc rsi
+	cmp BYTE [r10], 0
+	jmp short .loop_end
+	mov dl, BYTE [r10]
+	mov BYTE [r9], dl
+	inc r9
+	inc r10
 	jmp short .loop_begin
 
 	.loop_end:
-	mov rax, rdx
+	mov rax, rsi
 
-	pop rbp
 	ret

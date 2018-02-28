@@ -39,7 +39,7 @@ $(PROJECT)_$(X86_DIR):
 
 tests_run:
 	$(MAKE) -C $(TESTS_DIR)
-	LD_PRELOAD=./$(BIN_DIR)/x64_$(NAME) tests/tests_x64
+	tests/tests_x64 ../$(BIN_DIR)/x64_$(NAME)
 
 clean:
 	$(MAKE) -C $(PROJECT)_$(X64_DIR) clean

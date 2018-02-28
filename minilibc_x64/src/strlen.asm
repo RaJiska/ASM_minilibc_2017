@@ -2,6 +2,7 @@
 	global strlen:function
 
 	section .text:
+	; size_t strlen(const char *s)
 strlen:
 	push rbp
 	mov rbp, rsp

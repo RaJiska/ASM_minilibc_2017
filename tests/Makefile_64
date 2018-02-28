@@ -10,7 +10,7 @@ CC	=	gcc
 CFLAGS  =	-Wall -Wextra -Winit-self -Wwrite-strings
 CFLAGS  +=	-Wcast-align -Wshadow -Wredundant-decls -Wfloat-equal
 CFLAGS  +=	-Wundef -Wlogical-op -Winline -Wdouble-promotion
-CFLAGS  +=	-Wunreachable-code -coverage -Iinclude -m64
+CFLAGS  +=	-Wunreachable-code -coverage -Iinclude -m64 -O3
 
 LFLAGS	=	-ldl -lcriterion
 
@@ -20,9 +20,12 @@ RM	=	rm -f
 
 SRCDIR	=	src
 
-SRC	=	test/test_strlen.c			\
+SRC	=	setup.c					\
+		test/test_strlen.c			\
 		test/test_strcpy.c			\
 		test/test_strcmp.c			\
+		test/test_strchr.c			\
+		test/test_memset.c			\
 		utils/utils_strcmp.c
 
 SRC	:=	$(addprefix $(SRCDIR)/, $(SRC))
