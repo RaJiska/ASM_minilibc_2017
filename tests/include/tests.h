@@ -18,6 +18,7 @@ typedef struct functions_s
 	int (*my_strcmp)(const char *, const char *);
 	char *(*my_strchr)(const char *, int);
 	void *(*my_memset)(void *, int, size_t);
+	void *(*my_memcpy)(void *, void *, size_t);
 
 } functions_t;
 

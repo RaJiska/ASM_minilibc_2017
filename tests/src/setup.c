@@ -16,4 +16,5 @@ void setup(void)
 	fncs.my_strcmp = dlsym(handle, "strcmp");
 	fncs.my_strchr = dlsym(handle, "strchr");
 	fncs.my_memset = dlsym(handle, "memset");
+	fncs.my_memcpy = dlsym(handle, "memcpy");
 }
