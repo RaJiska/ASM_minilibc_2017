@@ -12,12 +12,12 @@ strcpy:
 	.loop_begin:
 	mov dl, BYTE [rsi + rcx]
 	mov BYTE [rdi + rcx], dl
-	cmp BYTE [rsi + rcx], 0
+	test dl, dl
 	jz short .loop_end
 	inc rcx
 	jmp short .loop_begin
 
 	.loop_end:
-	mov rax, rsi
+	mov rax, rdi
 
 	ret

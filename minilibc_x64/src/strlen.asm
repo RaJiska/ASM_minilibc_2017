@@ -4,8 +4,7 @@
 	section .text:
 	; size_t strlen(const char *s)
 strlen:
-	push rbp
-	mov rbp, rsp
+	; RDI = s
 
 	mov rax, rdi
 
@@ -19,5 +18,4 @@ strlen:
 	.loop_end:
 	sub rax, rdi
 
-	pop rbp
 	ret
