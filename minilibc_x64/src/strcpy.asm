@@ -4,19 +4,17 @@
 	section .text:
 	; char *strcpy(char *dest, const char *src)
 strcpy:
-	; RSI = dest
-	; RDI = src
+	; RDI = dest
+	; RSI = src
 
-	mov r9, rsi
-	mov r10, rdi
+	xor rcx, rcx
 
 	.loop_begin:
-	cmp BYTE [r10], 0
-	jmp short .loop_end
-	mov dl, BYTE [r10]
-	mov BYTE [r9], dl
-	inc r9
-	inc r10
+	mov dl, BYTE [rsi + rcx]
+	mov BYTE [rdi + rcx], dl
+	cmp BYTE [rsi + rcx], 0
+	jz short .loop_end
+	inc rcx
 	jmp short .loop_begin
 
 	.loop_end:
