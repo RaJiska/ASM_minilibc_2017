@@ -20,6 +20,7 @@ NAME	=	libasm.so
 SRC	=	src/strlen.asm				\
 		src/strcmp.asm				\
 		src/strncmp.asm				\
+		src/strcasecmp.asm			\
 		src/strcpy.asm				\
 		src/strchr.asm				\
 		src/memset.asm				\
