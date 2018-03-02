@@ -27,6 +27,8 @@ SRC	=	setup.c					\
 		test/test_strchr.c			\
 		test/test_memset.c			\
 		test/test_memcpy.c			\
+		test/test_rindex.c			\
+		test/test_strcspn.c			\
 		utils/utils_strcmp.c
 
 SRC	:=	$(addprefix $(SRCDIR)/, $(SRC))
