@@ -6,16 +6,15 @@
 strlen:
 	; RDI = s
 
-	mov rax, rdi
+	xor rax, rax
 
 	.loop_begin:
-	mov dl, BYTE [rax]
-	cmp dl, 0x0
-	je short .loop_end
+	mov dl, BYTE [rdi + rax]
+	test dl, dl
+	jz short .loop_end
 	inc rax
 	jmp short .loop_begin
 
 	.loop_end:
-	sub rax, rdi
 
 	ret
