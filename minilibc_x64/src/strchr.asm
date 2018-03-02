@@ -13,7 +13,7 @@ strchr:
 	cmp sil, BYTE [rax]
 	je short .loop_end
 	cmp BYTE [rax], 0
-	jz short .not_found
+	je short .not_found
 	inc rax
 	jmp short .loop_begin
 
