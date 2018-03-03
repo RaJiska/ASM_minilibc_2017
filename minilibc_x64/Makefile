@@ -26,6 +26,7 @@ SRC	=	src/strlen.asm				\
 		src/memset.asm				\
 		src/memcpy.asm				\
 		src/rindex.asm				\
+		src/memmove.asm				\
 		src/strcspn.asm
 
 OBJ	=	$(SRC:.asm=.o)
