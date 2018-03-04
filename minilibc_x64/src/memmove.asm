@@ -11,8 +11,8 @@ memmove:
 	; RSI = src
 	; RDX = n
 
-	push rdi	; RSP - 0x10
-	push rsi	; RSP - 0x8
+	push rdi	; RSP + 0x10
+	push rsi	; RSP + 0x8
 	push rdx	; RSP
 
 	mov rdi, [rsp]	; n (Restore RDX)
@@ -26,11 +26,11 @@ memmove:
 	mov rdi, [rsp + 0x10]	; dest (Restore RDI)
 	mov rsi, rax
 	mov rdx, [rsp]
-	push rax
+	;push rax
 	call memcpy WRT ..plt
 
-	pop rdi
-	call free WRT ..plt
+	;pop rdi
+	;call free WRT ..plt
 
 	pop rdx
 	pop rsi

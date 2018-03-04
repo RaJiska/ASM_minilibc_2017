@@ -21,7 +21,7 @@ typedef struct functions_s
 	void *(*my_memcpy)(void *, void *, size_t);
 	char *(*my_rindex)(const char *, int);
 	size_t *(*my_strcspn)(const char *, const char *);
-
+	void *(*my_memmove)(void *, const void *, size_t);
 } functions_t;
 
 functions_t fncs;

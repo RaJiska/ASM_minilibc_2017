@@ -1,6 +1,8 @@
+/a.c
 *.so
 *.o
 a.out
 *.bak
 .gdb_history
 .vscode
+peda-session*

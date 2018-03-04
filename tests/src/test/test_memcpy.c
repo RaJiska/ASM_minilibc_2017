@@ -19,5 +19,4 @@ Test(libasm, memcpy, .init = setup)
 	memset(&cpy[0], 0, 100);
 	result = fncs.my_memcpy(&cpy[0], &mem[0], 3);
 	cr_assert_eq(!memcmp(&cpy[0], &mem[0], 3) && result == &cpy[0], 1);
-
 }
