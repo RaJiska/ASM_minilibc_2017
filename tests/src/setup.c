@@ -20,4 +20,5 @@ void setup(void)
 	fncs.my_memmove = dlsym(handle, "memmove");
 	fncs.my_rindex = dlsym(handle, "rindex");
 	fncs.my_strcspn = dlsym(handle, "strcspn");
+	fncs.my_strstr = dlsym(handle, "strstr");
 }

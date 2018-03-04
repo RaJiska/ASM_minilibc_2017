@@ -11,29 +11,34 @@ memmove:
 	; RSI = src
 	; RDX = n
 
-	push rdi	; RSP + 0x10
-	push rsi	; RSP + 0x8
-	push rdx	; RSP
+	push rbp
+	mov rbp, rsp
 
-	mov rdi, [rsp]	; n (Restore RDX)
+	sub rsp, 0x18	; 3 longs
+
+	mov [rbp - 0x8], rdi
+	mov [rbp - 0x10], rsi
+	mov [rbp - 0x18], rdx
+
+	mov rdi, [rbp - 0x18]	; n (Restore RDX)
 	call malloc WRT ..plt
 
 	mov rdi, rax	; dest
-	mov rsi, [rsp + 0x8]	; src (Restore RSI)
-	mov rdx, [rsp]	; n (Restore RDX)
+	mov rsi, [rbp - 0x10]	; src (Restore RSI)
+	mov rdx, [rbp - 0x18]	; n (Restore RDX)
 	call memcpy WRT ..plt
 
-	mov rdi, [rsp + 0x10]	; dest (Restore RDI)
+	;mov [rbp - 0x20], rax
+
+	mov rdi, [rbp - 0x8]	; dest (Restore RDI)
 	mov rsi, rax
-	mov rdx, [rsp]
-	;push rax
+	mov rdx, [rbp - 0x18]
 	call memcpy WRT ..plt
 
-	;pop rdi
+	;mov rdi, [rbp - 0x20]
 	;call free WRT ..plt
 
-	pop rdx
-	pop rsi
-	pop rdi
+	add rsp, 0x18
 
+	pop rbp
 	ret

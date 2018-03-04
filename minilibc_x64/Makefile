@@ -7,8 +7,6 @@
 
 CC	=	gcc
 
-CFLAGS  =       -m64 -Ofast -fPIC
-
 LFLAGS	=	-shared
 
 NASM	=	nasm
@@ -27,7 +25,9 @@ SRC	=	src/strlen.asm				\
 		src/memcpy.asm				\
 		src/memmove.asm				\
 		src/rindex.asm				\
-		src/strcspn.asm
+		src/strpbrk.asm				\
+		src/strcspn.asm				\
+		src/strstr.asm
 
 OBJ	=	$(SRC:.asm=.o)
 
@@ -36,7 +36,7 @@ RM	=	rm -f
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LFLAGS)
+	$(CC) $(OBJ) -o $(NAME) $(LFLAGS)
 
 clean:
 	$(RM) $(OBJ)

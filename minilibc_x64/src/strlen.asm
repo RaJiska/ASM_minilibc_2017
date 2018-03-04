@@ -9,9 +9,8 @@ strlen:
 	xor rax, rax
 
 	.loop_begin:
-	mov dl, BYTE [rdi + rax]
-	test dl, dl
-	jz short .loop_end
+	cmp BYTE [rdi + rax], 0
+	je short .loop_end
 	inc rax
 	jmp short .loop_begin
 

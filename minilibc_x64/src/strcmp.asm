@@ -19,8 +19,8 @@ strcmp:
 	jmp short .loop_begin
 
 	.loop_end:
-	movzx eax, al
-	movzx edx, BYTE [rsi + rcx]
+	movsx eax, al
+	movsx edx, BYTE [rsi + rcx]
 	sub eax, edx
 	jmp short .return
 
