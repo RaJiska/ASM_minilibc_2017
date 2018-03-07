@@ -14,6 +14,7 @@ void setup(void)
 	fncs.my_strlen = dlsym(handle, "strlen");
 	fncs.my_strcpy = dlsym(handle, "strcpy");
 	fncs.my_strcmp = dlsym(handle, "strcmp");
+	fncs.my_strcasecmp = dlsym(handle, "strcasecmp");
 	fncs.my_strchr = dlsym(handle, "strchr");
 	fncs.my_memset = dlsym(handle, "memset");
 	fncs.my_memcpy = dlsym(handle, "memcpy");
@@ -21,4 +22,5 @@ void setup(void)
 	fncs.my_rindex = dlsym(handle, "rindex");
 	fncs.my_strcspn = dlsym(handle, "strcspn");
 	fncs.my_strstr = dlsym(handle, "strstr");
+	fncs.my_strpbrk = dlsym(handle, "strpbrk");
 }

@@ -1,7 +1,7 @@
 	bits 64
 	global strstr:function
 	extern strlen
-	extern strcmp
+	extern strncmp
 
 	section .text:
 	; char *strstr(const char *haystack, const char *needle)
@@ -37,7 +37,8 @@ strstr:
 	mov rdi, [rbp - 0x8]
 	mov rsi, [rbp - 0x10]
 	add rdi, rcx
-	call strcmp WRT ..plt
+	mov rdx, [rbp - 0x20]
+	call strncmp WRT ..plt
 
 	test eax, eax
 	jz short .found
