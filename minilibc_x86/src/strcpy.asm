@@ -2,24 +2,27 @@
 	global strcpy:function
 
 	section .text:
+	; char *strcpy(char *dest, const char *src)
 strcpy:
+	; EBP + 0x8 = dest
+	; EBP + 0xC = src
+
 	push ebp
 	mov ebp, esp
 
-	mov eax, [ebp + 0x8]
-	mov edx, [ebp + 0xC]
+	xor ecx, ecx
 
 	.loop_begin:
-	movzx ecx, BYTE [edx]
-	mov BYTE [eax], cl
-	test cl, cl
-	je short .loop_end
-	inc eax
-	inc edx
+	mov edx, [ebp + 0xC]
+	mov al, BYTE [edx + ecx]
+	mov edx, [ebp + 0x8]
+	mov BYTE [edx + ecx], al
+	test al, al
+	jz short .loop_end
+	inc ecx
 	jmp short .loop_begin
 
 	.loop_end:
-	mov BYTE [eax], 0x0
 	mov eax, [ebp + 0x8]
 
 	pop ebp

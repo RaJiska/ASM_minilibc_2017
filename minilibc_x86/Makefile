@@ -17,9 +17,9 @@ ASMFLAGS	=	-felf32
 
 NAME	=	libasm.so
 
-SRC	=	src/strlen.asm				\
-		src/strcmp.asm				\
-		src/strcpy.asm
+SRC	=	src/strlen.asm					\
+		src/strcpy.asm					\
+		src/strcmp.asm
 
 OBJ	=	$(SRC:.asm=.o)
 

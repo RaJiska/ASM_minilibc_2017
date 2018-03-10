@@ -6,18 +6,16 @@ strlen:
 	push ebp
 	mov ebp, esp
 
-	mov edi, [esp + 0x8]
-	mov eax, edi
+	mov eax, [ebp + 0x4]
 
 	.loop_begin:
-	mov dl, BYTE [eax]
-	cmp dl, 0x0
+	cmp BYTE [eax], 0x0
 	je short .loop_end
 	inc eax
 	jmp short .loop_begin
 
 	.loop_end:
-	sub eax, edi
+	sub eax, [esp + 0x4]
 
 	pop ebp
 	ret
