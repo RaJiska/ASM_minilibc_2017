@@ -6,7 +6,7 @@
 memcpy:
 	; EBP + 0x8 = dest
 	; EBP + 0xC = src
-	; EBP + 0x14 = n
+	; EBP + 0x10 = n
 
 	push ebp
 	mov ebp, esp
@@ -14,7 +14,7 @@ memcpy:
 	xor ecx, ecx
 
 	.loop_begin:
-	cmp ecx, [ebp + 0x14]
+	cmp ecx, [ebp + 0x10]
 	je short .loop_end
 	mov edx, [ebp + 0xC]
 	mov al, BYTE [edx + ecx]

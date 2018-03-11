@@ -6,7 +6,7 @@
 memset:
 	; EBP + 0x8 = s
 	; EBP + 0xC = c
-	; EBP + 0x14 = n
+	; EBP + 0x10 = n
 
 	push ebp
 	mov ebp, esp
@@ -14,7 +14,7 @@ memset:
 	xor ecx, ecx
 
 	.loop_begin:
-	cmp ecx, [ebp + 0x14]
+	cmp ecx, [ebp + 0x10]
 	jge short .loop_end
 	mov al, BYTE [ebp + 0xC]
 	mov edx, [ebp + 0x8]

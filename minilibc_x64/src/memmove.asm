@@ -1,4 +1,4 @@
-bits 64
+	bits 64
 	global memmove:function
 	extern malloc
 	extern memcpy
