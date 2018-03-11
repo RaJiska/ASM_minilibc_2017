@@ -20,10 +20,19 @@ RM	=	rm -f
 
 SRCDIR	=	src
 
-SRC	=	test/test_strlen.c			\
+SRC	=	setup.c					\
+		test/test_strlen.c			\
 		test/test_strcpy.c			\
+		test/test_strcasecmp.c			\
 		test/test_strcmp.c			\
-		utils/utils_strcmp.c
+		test/test_strchr.c			\
+		test/test_memset.c			\
+		test/test_memcpy.c			\
+		test/test_memmove.c			\
+		test/test_rindex.c			\
+		test/test_strcspn.c			\
+		test/test_strstr.c			\
+		test/test_strpbrk.c
 
 SRC	:=	$(addprefix $(SRCDIR)/, $(SRC))
 
