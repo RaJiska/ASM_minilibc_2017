@@ -21,10 +21,13 @@ SRC	=	src/strlen.asm					\
 		src/strcpy.asm					\
 		src/strcmp.asm					\
 		src/strncmp.asm					\
+		src/strcasecmp.asm				\
 		src/memcpy.asm					\
 		src/memset.asm					\
 		src/memmove.asm					\
-		src/rindex.asm
+		src/rindex.asm					\
+		src/strchr.asm					\
+		src/strcspn.asm
 
 OBJ	=	$(SRC:.asm=.o)
 
