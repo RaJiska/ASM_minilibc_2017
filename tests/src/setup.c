@@ -9,8 +9,10 @@
 
 void setup(void)
 {
-	void *handle = dlopen("libasm.so", RTLD_GLOBAL);
+	void *handle = dlopen("./libasm.so", RTLD_LAZY);
 
+	if (!handle)
+		printf("Could not find library. Falling back to LibC.\n");
 	fncs.my_strlen = dlsym(handle, "strlen");
 	fncs.my_strcpy = dlsym(handle, "strcpy");
 	fncs.my_strcmp = dlsym(handle, "strcmp");

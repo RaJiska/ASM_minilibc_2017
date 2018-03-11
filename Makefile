@@ -37,9 +37,15 @@ $(PROJECT)_$(X86_DIR):
 	$(LN) $(PROJECT)_$(X86_DIR)/$(NAME) .
 	$(LN) ../$(PROJECT)_$(X86_DIR)/$(NAME) $(BIN_DIR)/x86_$(NAME)
 
-tests_run:
-	$(MAKE) -C $(TESTS_DIR)
-	tests/tests_x64 ../$(BIN_DIR)/x64_$(NAME)
+tests_run:	test_$(PROJECT)_$(X64_DIR)
+
+test_$(PROJECT)_$(X86_DIR):
+	$(MAKE) -C $(TESTS_DIR) -f Makefile_32
+	tests/tests_x86
+
+test_$(PROJECT)_$(X64_DIR):
+	$(MAKE) -C $(TESTS_DIR) -f Makefile_64
+	tests/tests_x64
 
 clean:
 	$(MAKE) -C $(PROJECT)_$(X64_DIR) clean

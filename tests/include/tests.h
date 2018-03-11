@@ -8,6 +8,7 @@
 #ifndef TESTS_H_
 	#define TESTS_H_
 
+#include <stdio.h>
 #include <dlfcn.h>
 #include <criterion/criterion.h>
 

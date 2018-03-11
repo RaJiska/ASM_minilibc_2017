@@ -11,9 +11,6 @@ MKFILE_64	=	Makefile_64
 
 RM	=	rm -f
 
-all:
-	$(MAKE) -f $(MKFILE_64)
-
 clean:
 	$(MAKE) -f $(MKFILE_64) clean
 

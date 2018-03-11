@@ -2,11 +2,14 @@
 	global strlen:function
 
 	section .text:
+	; size_t strlen(const char *s)
 strlen:
+	; EBP + 0x8 = s
+
 	push ebp
 	mov ebp, esp
 
-	mov eax, [ebp + 0x4]
+	mov eax, DWORD [ebp + 0x8]
 
 	.loop_begin:
 	cmp BYTE [eax], 0x0
@@ -15,7 +18,7 @@ strlen:
 	jmp short .loop_begin
 
 	.loop_end:
-	sub eax, [esp + 0x4]
+	sub eax, DWORD [ebp + 0x8]
 
 	pop ebp
 	ret
