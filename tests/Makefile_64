@@ -10,7 +10,7 @@ CC	=	gcc
 CFLAGS  =	-Wall -Wextra -Winit-self -Wwrite-strings
 CFLAGS  +=	-Wcast-align -Wshadow -Wredundant-decls -Wfloat-equal
 CFLAGS  +=	-Wundef -Wlogical-op -Winline -Wdouble-promotion
-CFLAGS  +=	-Wunreachable-code -coverage -Iinclude -m64
+CFLAGS  +=	-Wunreachable-code -coverage -Iinclude -m64 -fno-builtin
 
 LFLAGS	=	-ldl -lcriterion
 
