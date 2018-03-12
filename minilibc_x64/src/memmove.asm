@@ -14,7 +14,7 @@ memmove:
 	push rbp
 	mov rbp, rsp
 
-	sub rsp, 0x18	; 3 longs
+	sub rsp, 0x20	; 4 longs
 
 	mov [rbp - 0x8], rdi
 	mov [rbp - 0x10], rsi
@@ -28,17 +28,20 @@ memmove:
 	mov rdx, [rbp - 0x18]	; n (Restore RDX)
 	call memcpy WRT ..plt
 
-	;mov [rbp - 0x20], rax
+	mov [rbp - 0x20], rax
 
 	mov rdi, [rbp - 0x8]	; dest (Restore RDI)
 	mov rsi, rax
 	mov rdx, [rbp - 0x18]
 	call memcpy WRT ..plt
 
-	;mov rdi, [rbp - 0x20]
-	;call free WRT ..plt
+	push rax
 
-	add rsp, 0x18
+	mov rdi, [rbp - 0x20]
+	call free WRT ..plt
+
+	pop rax
+	add rsp, 0x20
 
 	pop rbp
 	ret

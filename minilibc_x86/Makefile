@@ -7,7 +7,7 @@
 
 CC	=	gcc
 
-CFLAGS  =       -m32 -Ofast -fPIC
+CFLAGS  =       -m32 -fno-builtin
 
 LFLAGS	=	-shared
 

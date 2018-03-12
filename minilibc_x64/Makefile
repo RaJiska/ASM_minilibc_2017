@@ -7,7 +7,7 @@
 
 CC	=	gcc
 
-LFLAGS	=	-shared
+LFLAGS	=	-shared -fno-builtin
 
 NASM	=	nasm
 
