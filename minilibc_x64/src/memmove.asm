@@ -14,34 +14,41 @@ memmove:
 	push rbp
 	mov rbp, rsp
 
-	sub rsp, 0x20	; 4 longs
+	push rdi
 
-	mov [rbp - 0x8], rdi
-	mov [rbp - 0x10], rsi
-	mov [rbp - 0x18], rdx
+	test rdx, rdx	; n == 0
+	jz short .copy_end
+	cmp rdi, rsi	; dest == src
+	je short .copy_end
 
-	mov rdi, [rbp - 0x18]	; n (Restore RDX)
-	call malloc WRT ..plt
+	xor rcx, rcx
+	cmp rsi, rdi
+	jb short .right_copy
 
-	mov rdi, rax	; dest
-	mov rsi, [rbp - 0x10]	; src (Restore RSI)
-	mov rdx, [rbp - 0x18]	; n (Restore RDX)
-	call memcpy WRT ..plt
+	.left_copy:
 
-	mov [rbp - 0x20], rax
+	.lc_begin_loop:
+	cmp rcx, rdx
+	jae short .copy_end
+	mov al, BYTE [rsi + rcx]
+	mov BYTE [rdi + rcx], al
+	inc rcx
+	jmp short .lc_begin_loop
 
-	mov rdi, [rbp - 0x8]	; dest (Restore RDI)
-	mov rsi, rax
-	mov rdx, [rbp - 0x18]
-	call memcpy WRT ..plt
+	.right_copy:
+	mov rcx, rdx
+	dec rcx
 
-	push rax
+	.rc_begin_loop:
+	mov al, BYTE [rsi + rcx]
+	mov BYTE [rdi + rcx], al
+	test rcx, rcx
+	jz short .copy_end
+	dec rcx
+	jmp short .rc_begin_loop
 
-	mov rdi, [rbp - 0x20]
-	call free WRT ..plt
-
+	.copy_end:
 	pop rax
-	add rsp, 0x20
 
 	pop rbp
 	ret
