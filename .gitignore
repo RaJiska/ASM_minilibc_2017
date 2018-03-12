@@ -6,3 +6,5 @@ a.out
 .gdb_history
 .vscode
 peda-session*
+*.gcda
+*.gcno

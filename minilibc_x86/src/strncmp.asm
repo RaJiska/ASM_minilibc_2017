@@ -6,7 +6,7 @@
 strncmp:
 	; EBP + 0x8 = s1
 	; EBP + 0xC = s2
-	; EBP + 0x10 = y
+	; EBP + 0x10 = n
 
 	push ebp
 	mov ebp, esp
@@ -18,7 +18,7 @@ strncmp:
 
 	.loop_begin:
 	cmp ecx, [ebp + 0x10]
-	jge short .return_0
+	jae short .return_0
 	mov edx, [ebp + 0x8]
 	mov al, BYTE [edx + ecx]
 	mov edx, [ebp + 0xC]

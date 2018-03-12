@@ -15,9 +15,8 @@ strncmp:
 
 	.loop_begin:
 	cmp rcx, rdx
-	jge short .return_0
+	jae short .return_0
 	mov al, BYTE [rdi + rcx]
-	jge short .loop_end
 	cmp al, BYTE [rsi + rcx]
 	jne short .loop_end
 	test al, al

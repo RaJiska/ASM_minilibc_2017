@@ -25,6 +25,7 @@ SRC	=	setup.c					\
 		test/test_strcpy.c			\
 		test/test_strcasecmp.c			\
 		test/test_strcmp.c			\
+		test/test_strncmp.c			\
 		test/test_strchr.c			\
 		test/test_memset.c			\
 		test/test_memcpy.c			\
