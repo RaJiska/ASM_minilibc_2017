@@ -5,7 +5,7 @@
 ## asm
 ##
 
-CC	=	gcc
+CC	=	ld
 
 CFLAGS	=	-m64 -fno-builtin
 
