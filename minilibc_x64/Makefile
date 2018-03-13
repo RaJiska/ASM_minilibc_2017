@@ -7,7 +7,7 @@
 
 CC	=	ld
 
-CFLAGS	=	-m64 -fno-builtin
+CFLAGS	=	-m elf_x86_64
 
 LFLAGS	=	-shared
 
