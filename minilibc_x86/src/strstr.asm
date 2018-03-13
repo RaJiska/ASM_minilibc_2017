@@ -2,6 +2,7 @@
 	global strstr:function
 	extern strlen
 	extern strncmp
+	extern _GLOBAL_OFFSET_TABLE_
 
 	section .text:
 	; char *strstr(const char *haystack, const char *needle)
@@ -13,6 +14,9 @@ strstr:
 	mov ebp, esp
 
 	sub esp, 0x8	; 2 longs
+
+	push ebx
+	mov ebx, _GLOBAL_OFFSET_TABLE_
 
 	mov edx, DWORD [ebp + 0x8]
 	push edx
@@ -37,6 +41,7 @@ strstr:
 	jl short .not_found
 
 	push ecx
+
 	mov edx, DWORD [ebp - 0x8]
 	push edx
 	mov edx, DWORD [ebp + 0xC]
@@ -44,9 +49,9 @@ strstr:
 	mov edx, DWORD [ebp + 0x8]
 	add edx, ecx
 	push edx
-
 	call strncmp WRT ..plt
 	add esp, 0xC
+
 	pop ecx
 
 	test eax, eax
@@ -64,6 +69,7 @@ strstr:
 
 	.return:
 
+	pop ebx
 	add esp, 0x8
 
 	pop ebp
